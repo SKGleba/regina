@@ -4,6 +4,7 @@
 #include "include/utils.h"
 #include "include/paddr.h"
 #include "include/clib.h"
+#include "include/kirk.h"
 
 void rpc_loop(void) {
     uint8_t chash;
@@ -46,6 +47,9 @@ void rpc_loop(void) {
             break;
         case RGN_RPC_CMD_MEMSET32:
             combuf->ret = (uint32_t)memset32((void *)combuf->args[0], combuf->args[1], combuf->args[2]);
+            break;
+        case RGN_RPC_CMD_KIRK_CMD:
+            combuf->ret = kirk_simpleCmd(combuf->args[0], combuf->args[1], combuf->args[2]);
             break;
         default:
             combuf->ret = -1;
