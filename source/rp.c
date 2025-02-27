@@ -51,6 +51,9 @@ void rpc_loop(void) {
         case RGN_RPC_CMD_KIRK_CMD:
             combuf->ret = kirk_simpleCmd(combuf->args[0], combuf->args[1], combuf->args[2]);
             break;
+        case RGN_RPC_CMD_EXEC:
+            combuf->ret = ((uint32_t (*)(uint32_t, uint32_t, uint32_t, uint32_t*))combuf->args[0])(combuf->args[1], combuf->args[2], combuf->args[3], combuf->extra_data);
+            break;
         default:
             combuf->ret = -1;
             break;

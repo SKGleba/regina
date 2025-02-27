@@ -9,12 +9,13 @@ REGINA_RPC_COMMANDS = {
     "memset": "0x4",
     "memcpy": "0x5",
     "memset32": "0x6",
-    "kirk" : "0x7"
+    "kirk" : "0x7",
+    "exec": "0x8"
 }
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python regina_rpc.py <command> [args...]")
+        print("Usage: python regina_rpc.py <command> [arg0..arg5] [timeout_x] [timeout_y]")
         print("Available commands:", REGINA_RPC_COMMANDS.keys())
         sys.exit(1)
 
